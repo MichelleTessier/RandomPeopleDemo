@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2C08DE631EC603ED00F95629 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE621EC603ED00F95629 /* AppDelegate.swift */; };
-		2C08DE651EC603ED00F95629 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE641EC603ED00F95629 /* ViewController.swift */; };
 		2C08DE681EC603ED00F95629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C08DE661EC603ED00F95629 /* Main.storyboard */; };
 		2C08DE6A1EC603ED00F95629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C08DE691EC603ED00F95629 /* Assets.xcassets */; };
 		2C08DE6D1EC603ED00F95629 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C08DE6B1EC603ED00F95629 /* LaunchScreen.storyboard */; };
 		2C08DE781EC603ED00F95629 /* VivintSolarDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE771EC603ED00F95629 /* VivintSolarDemoTests.swift */; };
+		2C08DE831EC6078C00F95629 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE821EC6078C00F95629 /* PeopleTableViewController.swift */; };
+		2C08DE851EC60A7600F95629 /* PeopleWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE841EC60A7600F95629 /* PeopleWebService.swift */; };
+		2C08DE901EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE8E1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld */; };
+		2C08DE921EC62DD700F95629 /* PeopleCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE911EC62DD700F95629 /* PeopleCoreDataService.swift */; };
+		2C2B86501EC67A0E003A5222 /* ThumbnailImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B864F1EC67A0E003A5222 /* ThumbnailImageDownloader.swift */; };
+		2C2B86521EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B86511EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +33,6 @@
 /* Begin PBXFileReference section */
 		2C08DE5F1EC603ED00F95629 /* VivintSolarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VivintSolarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C08DE621EC603ED00F95629 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C08DE641EC603ED00F95629 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2C08DE671EC603ED00F95629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C08DE691EC603ED00F95629 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C08DE6C1EC603ED00F95629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +40,12 @@
 		2C08DE731EC603ED00F95629 /* VivintSolarDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VivintSolarDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C08DE771EC603ED00F95629 /* VivintSolarDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VivintSolarDemoTests.swift; sourceTree = "<group>"; };
 		2C08DE791EC603ED00F95629 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C08DE821EC6078C00F95629 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		2C08DE841EC60A7600F95629 /* PeopleWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleWebService.swift; sourceTree = "<group>"; };
+		2C08DE8F1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VivintSolarDemoModel.xcdatamodel; sourceTree = "<group>"; };
+		2C08DE911EC62DD700F95629 /* PeopleCoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleCoreDataService.swift; sourceTree = "<group>"; };
+		2C2B864F1EC67A0E003A5222 /* ThumbnailImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailImageDownloader.swift; sourceTree = "<group>"; };
+		2C2B86511EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfPeopleTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +88,12 @@
 			isa = PBXGroup;
 			children = (
 				2C08DE621EC603ED00F95629 /* AppDelegate.swift */,
-				2C08DE641EC603ED00F95629 /* ViewController.swift */,
+				2C08DE911EC62DD700F95629 /* PeopleCoreDataService.swift */,
+				2C08DE841EC60A7600F95629 /* PeopleWebService.swift */,
+				2C2B864F1EC67A0E003A5222 /* ThumbnailImageDownloader.swift */,
+				2C08DE821EC6078C00F95629 /* PeopleTableViewController.swift */,
+				2C2B86511EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift */,
+				2C08DE8E1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld */,
 				2C08DE661EC603ED00F95629 /* Main.storyboard */,
 				2C08DE691EC603ED00F95629 /* Assets.xcassets */,
 				2C08DE6B1EC603ED00F95629 /* LaunchScreen.storyboard */,
@@ -201,8 +216,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C08DE651EC603ED00F95629 /* ViewController.swift in Sources */,
+				2C08DE851EC60A7600F95629 /* PeopleWebService.swift in Sources */,
+				2C2B86501EC67A0E003A5222 /* ThumbnailImageDownloader.swift in Sources */,
+				2C08DE831EC6078C00F95629 /* PeopleTableViewController.swift in Sources */,
+				2C08DE901EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld in Sources */,
+				2C2B86521EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift in Sources */,
 				2C08DE631EC603ED00F95629 /* AppDelegate.swift in Sources */,
+				2C08DE921EC62DD700F95629 /* PeopleCoreDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +434,7 @@
 				2C08DE7E1EC603ED00F95629 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C08DE7F1EC603ED00F95629 /* Build configuration list for PBXNativeTarget "VivintSolarDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -422,8 +443,22 @@
 				2C08DE811EC603ED00F95629 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2C08DE8E1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2C08DE8F1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodel */,
+			);
+			currentVersion = 2C08DE8F1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodel */;
+			path = VivintSolarDemoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2C08DE571EC603ED00F95629 /* Project object */;
 }
