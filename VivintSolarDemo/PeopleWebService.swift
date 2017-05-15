@@ -7,11 +7,25 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
+
+//Web person object that can be used by other classes
+class WebPerson {
+    
+    var phone : String?
+    var email : String?
+    var thumbnailURL : String?
+    var name : String?
+    var id : String?
+    
+}
 
 class PeopleWebService: NSObject {
     
     class func getDataForRandomPeople(count : NSInteger, completion: @escaping (([WebPerson]?, WebError?) -> ())) {
         
+        //Construct the url
         let resultsCountQueryItem = URLQueryItem(name: "results", value: count.description)
         
         let queryItems = [resultsCountQueryItem]
@@ -22,6 +36,7 @@ class PeopleWebService: NSObject {
         
         guard let constructedURL = components.url else { return }
    
+        //Create a data task
         let task = dataTaskWithURL(constructedURL) { (data, error) in
             
             if let error = error {
@@ -41,6 +56,7 @@ class PeopleWebService: NSObject {
         
     }
     
+    //Creates a data task that handles basic HTTP and data task errors
     class func dataTaskWithURL(_ url : URL, completion : @escaping ((Data?, WebError?) -> ())) -> URLSessionDataTask {
         
         return URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -63,6 +79,32 @@ class PeopleWebService: NSObject {
         
     }
     
+    class func dowloadThumbnailImageForThumnail(thumbnail : Thumbnail, completion : @escaping ((UIImage?, NSManagedObjectID) -> ())) {
+        
+        let thumbnailID = thumbnail.objectID
+        guard let remoteURLString = thumbnail.remoteURL, let url = URL(string: remoteURLString) else { completion(nil, thumbnailID); return }
+        
+        let task = PeopleWebService.dataTaskWithURL(url) { (data, error) in
+            
+            guard let data = data, error == nil else {
+                completion(nil, thumbnailID)
+                return
+            }
+            
+            thumbnail.managedObjectContext?.perform {
+                thumbnail.imageData = data as NSData
+            }
+            
+            completion(UIImage(data: data), thumbnailID)
+            
+        }
+        
+        task.resume()
+        
+    }
+    
+    //Parses http response code into error
+    //Returns nil if http resposne was a success (200)
     private class func parseURLResponseCode(urlResponse: URLResponse?) -> WebError? {
         guard let responseCode = (urlResponse as? HTTPURLResponse)?.statusCode else {
             //If we don't have a status code, something is wrong
@@ -78,6 +120,7 @@ class PeopleWebService: NSObject {
         return nil
     }
     
+    //Parses json into an array of objects that are easier to serialize to Core Data objects
     private class func parseRandomPeopleData(_ data : Data?) -> [WebPerson]? {
         
         guard let data = data else { return nil }
@@ -96,8 +139,6 @@ class PeopleWebService: NSObject {
     }
     
     //For parsing larger amounts of JSON, I would rather use Mantle. https://github.com/Mantle/Mantle
-    //But as this is a coding test, I thought it might be nice to show what I would do myself
-    
     private class func parseRandomPeopleJSON(_ jsonDictionary : Dictionary<String, Any>) -> [WebPerson]? {
         
         guard let results = jsonDictionary["results"] as? Array<Dictionary<String, Any>> else { return nil }
@@ -141,15 +182,8 @@ class PeopleWebService: NSObject {
     
 }
 
-class WebPerson {
-    
-    var phone : String?
-    var email : String?
-    var thumbnailURL : String?
-    var name : String?
-    var id : String?
-    
-}
+
+//Basic error handling
 
 public enum WebError: Error {
     

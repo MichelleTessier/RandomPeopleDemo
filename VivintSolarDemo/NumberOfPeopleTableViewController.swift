@@ -9,6 +9,8 @@
 import UIKit
 
 protocol NumberOfPeopleDelegate : class {
+    
+    //Called when the number of people in this view is updated
     func numberOfPeopleChanged()
 }
 
@@ -28,11 +30,6 @@ class NumberOfPeopleTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-     
-        return 1
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

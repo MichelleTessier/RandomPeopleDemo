@@ -19,6 +19,7 @@ class PeopleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //If we already have people saved in core data, load them instead of fetching new people
         let fetchRequest = NSFetchRequest<Person>(entityName: "Person")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -34,7 +35,7 @@ class PeopleTableViewController: UITableViewController {
     
     @IBAction func handleRefresh(_ sender: Any) {
         fetchRandomPeople()
-        refreshControl?.endRefreshing()
+        
     }
     
     func fetchRandomPeople() {
@@ -43,6 +44,7 @@ class PeopleTableViewController: UITableViewController {
         
         let context = VivintSolarDemoDataModel.sharedModel.mainContext
         
+        //Get the count of people we should be returning from user defaults
         var count = UserDefaults.standard.integer(forKey: NumberOfPeopleTableViewController.kNumberOfPeopleKey)
         
         if count <= 0 { count = 10 }
@@ -50,6 +52,10 @@ class PeopleTableViewController: UITableViewController {
         PeopleWebService.getDataForRandomPeople(count: count) { webPeople, error in
             
             guard let webPeople = webPeople, error == nil else {
+                //Handle error
+                if (self.refreshControl?.isRefreshing ?? false) {
+                    self.refreshControl?.endRefreshing()
+                }
                 self.presentFetchErrorAlertForError(error : error)
                 return
             }
@@ -68,21 +74,30 @@ class PeopleTableViewController: UITableViewController {
             //Wrapping in a context.perform block ensures that it will be scheduled last after all of the above background blocks are run
             context.perform {
                 
+                //Keep a reference to the old array of people we had
                 let oldRandomPeople = self.randomPeople
+                
+                //Sort and set new people array
                 self.randomPeople = newRandomPeople.sorted(by: { (lhs, rhs) -> Bool in
                     guard let lhsName = lhs.name, let rhsName = rhs.name else { return false }
                     return lhsName < rhsName
                 })
                 
+                //Update tableview
                 DispatchQueue.main.async {
+                    if (self.refreshControl?.isRefreshing ?? false) {
+                        self.refreshControl?.endRefreshing()
+                    }
                     self.tableView.reloadData()
                     
                 }
                 
+                //Delete the person objects we're not using anymore
                 for oldPerson in oldRandomPeople {
                     context.delete(oldPerson)
                 }
                 
+                //Save
                 do {
                     try context.save()
                 } catch {
@@ -96,7 +111,7 @@ class PeopleTableViewController: UITableViewController {
         
     }
     
-    
+    //Creates and presents an error alert from a WebError
     func presentFetchErrorAlertForError(error: WebError?) {
         
         var message : String
@@ -115,14 +130,8 @@ class PeopleTableViewController: UITableViewController {
         
     }
 
-    
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
- 
-        return 1
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -145,7 +154,6 @@ class PeopleTableViewController: UITableViewController {
         }
     }
  
-
 }
 
 extension PeopleTableViewController : NumberOfPeopleDelegate {
@@ -164,6 +172,8 @@ class PeopleTableViewCell : UITableViewCell {
     var person : Person? {
         didSet {
             guard let person = person else { return }
+            
+            //Update cell labels
             nameLabel.text = person.name
             emailLabel.text = person.email
             phoneLabel.text = person.phone
@@ -171,23 +181,24 @@ class PeopleTableViewCell : UITableViewCell {
             
             if let imageData = thumbnail.imageData  {
                 
+                //If we have image data already saved for this thumbnail, use that data
                 thumbnailImageView.image = UIImage(data : imageData as Data)
                 
             } else {
                
-                ThumbnailImageDownloader.dowloadThumbnailImageForThumnail(thumbnail : thumbnail) { (image, thumbnailID) in
+                //Otherwise we need to download our thumbnail
+                PeopleWebService.dowloadThumbnailImageForThumnail(thumbnail : thumbnail) { (image, thumbnailID) in
                     
                     DispatchQueue.main.async {
                         if let image = image, self.person?.thumbnail?.objectID == thumbnailID {
+                            //Make sure the person on this cell hasn't changed since we asked for this thumbnail
                             self.thumbnailImageView.image = image
                         }
                     }
                  
                 }
             }
-            
-            
-            
+        
         }
     }
     

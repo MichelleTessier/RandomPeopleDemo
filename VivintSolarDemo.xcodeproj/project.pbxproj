@@ -16,7 +16,6 @@
 		2C08DE851EC60A7600F95629 /* PeopleWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE841EC60A7600F95629 /* PeopleWebService.swift */; };
 		2C08DE901EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE8E1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld */; };
 		2C08DE921EC62DD700F95629 /* PeopleCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C08DE911EC62DD700F95629 /* PeopleCoreDataService.swift */; };
-		2C2B86501EC67A0E003A5222 /* ThumbnailImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B864F1EC67A0E003A5222 /* ThumbnailImageDownloader.swift */; };
 		2C2B86521EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B86511EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 		2C08DE841EC60A7600F95629 /* PeopleWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleWebService.swift; sourceTree = "<group>"; };
 		2C08DE8F1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VivintSolarDemoModel.xcdatamodel; sourceTree = "<group>"; };
 		2C08DE911EC62DD700F95629 /* PeopleCoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleCoreDataService.swift; sourceTree = "<group>"; };
-		2C2B864F1EC67A0E003A5222 /* ThumbnailImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailImageDownloader.swift; sourceTree = "<group>"; };
 		2C2B86511EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfPeopleTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,7 +88,6 @@
 				2C08DE621EC603ED00F95629 /* AppDelegate.swift */,
 				2C08DE911EC62DD700F95629 /* PeopleCoreDataService.swift */,
 				2C08DE841EC60A7600F95629 /* PeopleWebService.swift */,
-				2C2B864F1EC67A0E003A5222 /* ThumbnailImageDownloader.swift */,
 				2C08DE821EC6078C00F95629 /* PeopleTableViewController.swift */,
 				2C2B86511EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift */,
 				2C08DE8E1EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld */,
@@ -217,7 +214,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C08DE851EC60A7600F95629 /* PeopleWebService.swift in Sources */,
-				2C2B86501EC67A0E003A5222 /* ThumbnailImageDownloader.swift in Sources */,
 				2C08DE831EC6078C00F95629 /* PeopleTableViewController.swift in Sources */,
 				2C08DE901EC62D1E00F95629 /* VivintSolarDemoModel.xcdatamodeld in Sources */,
 				2C2B86521EC68EE5003A5222 /* NumberOfPeopleTableViewController.swift in Sources */,
