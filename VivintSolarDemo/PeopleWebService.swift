@@ -79,6 +79,7 @@ class PeopleWebService: NSObject {
         
     }
     
+    //Downloads image data for a thumbnail
     class func dowloadThumbnailImageForThumnail(thumbnail : Thumbnail, completion : @escaping ((UIImage?, NSManagedObjectID) -> ())) {
         
         let thumbnailID = thumbnail.objectID
@@ -91,8 +92,20 @@ class PeopleWebService: NSObject {
                 return
             }
             
-            thumbnail.managedObjectContext?.perform {
+            guard let context = thumbnail.managedObjectContext else {completion(nil, thumbnailID); return }
+            
+            context.perform {
+                
+                //Normally I would not save images directly to Core Data, but in this case it was simple, and a small amount of image data
                 thumbnail.imageData = data as NSData
+                
+                //Save
+                do {
+                    try context.save()
+                } catch {
+                    print("Error saving context: \(error)")
+                    context.rollback()
+                }
             }
             
             completion(UIImage(data: data), thumbnailID)
